@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <!--<snippetPackages>-->
+  <ItemGroup>
+    <PackageReference Include="AltCover" Version="8.5.841" />
+    <PackageReference Include="nunit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
+  </ItemGroup>
+  <!--</snippetPackages>-->
+
+  <ItemGroup>
+    <ProjectReference Include="..\PrimeService\PrimeService.csproj" />
+  </ItemGroup>
+
+</Project>
