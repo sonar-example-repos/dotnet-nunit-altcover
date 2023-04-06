@@ -26,11 +26,11 @@ dotnet test
 
 
 TODO write up instructions on this repo
-https://stackoverflow.com/questions/45482507/how-do-i-install-nunit-3-console-on-windows-and-run-tests
-go update https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-c-vb-net/9871
-
+* https://stackoverflow.com/questions/45482507/how-do-i-install-nunit-3-console-on-windows-and-run-tests
+* go update https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-c-vb-net/9871
 
 ```text
+> dotnet add package NUnit.ConsoleRunner --version 3.16.3
 > dotnet add package altcover --version 8.5.841
 > BEGIN
 > dotnet build
