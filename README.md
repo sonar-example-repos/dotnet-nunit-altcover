@@ -30,7 +30,7 @@ TODO write up instructions on this repo
 * go update https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-c-vb-net/9871
 
 ```text
-> dotnet add package NUnit.ConsoleRunner --version 3.16.3
+> (install NUnit via choco)
 > dotnet add package altcover --version 8.5.841
 > BEGIN
 > dotnet build
