@@ -29,12 +29,26 @@ TODO write up instructions on this repo
 * https://stackoverflow.com/questions/45482507/how-do-i-install-nunit-3-console-on-windows-and-run-tests
 * go update https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-c-vb-net/9871
 
+
+The key Sonar analysis parameter is **/d:"sonar.cs.opencover.reportsPaths=NUnitResults.xml"**.
+
 ```text
 > (install NUnit via choco)
-> dotnet add package altcover --version 8.5.841
-> BEGIN
+> (if altcover not added to csproj/vbproj yet) dotnet add package altcover --version 8.5.841
+> dotnet sonarscanner begin /k:dotnet-nunit-altcover /d:sonar.login=<INSERT-TOKEN> /d:sonar.host.url=http://localhost:9900 /d:sonar.verbose=true /d:"sonar.cs.opencover.reportsPaths=NUnitResults.xml"
 > dotnet build
 > nunit3-console.exe --result=NUnitResults.xml "PrimeService.Tests\bin\Debug\netcoreapp3.1\PrimeService.Tests.dll"
 > dotnet test /p:AltCover=true
-> END
+> dotnet sonarscanner end /d:sonar.login=<INSERT-TOKEN>
+```
+
+Example sonar analysis log:
+```text
+04:35:30.776 INFO: Sensor C# Unit Test Results Import [csharp]
+04:35:30.777 DEBUG: Pattern matcher extracted prefix/absolute path 'C:\Users\maevetesting\Downloads\Projects\dotnet-nunit-altcover\.\NUnitResults.xml' from the given pattern 'NUnitResults.xml'.
+04:35:30.777 DEBUG: Pattern matcher returns a single file: 'C:\Users\maevetesting\Downloads\Projects\dotnet-nunit-altcover\.\NUnitResults.xml'.
+04:35:30.778 DEBUG: The current user dir is 'C:\Users\maevetesting\Downloads\Projects\dotnet-nunit-altcover'.
+04:35:30.778 INFO: Parsing the NUnit Test Results file 'C:\Users\maevetesting\Downloads\Projects\dotnet-nunit-altcover\.\NUnitResults.xml'.
+04:35:30.916 DEBUG: Parsed NUnit test run - total: 4, totalSkipped: 0, failures: 0, errors: 0, execution time: 966.
+04:35:30.935 INFO: Sensor C# Unit Test Results Import [csharp] (done) | time=159ms
 ```
