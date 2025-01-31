@@ -30,12 +30,12 @@ TODO write up instructions on this repo
 * go update https://community.sonarsource.com/t/coverage-test-data-generate-reports-for-c-vb-net/9871
 
 
-The key Sonar analysis parameter is **/d:"sonar.cs.opencover.reportsPaths=NUnitResults.xml"**.
+The key Sonar analysis parameter is **/d:"sonar.cs.nunit.reportsPaths=NUnitResults.xml"** and ensuring each test project has [AltCover](https://www.nuget.org/packages/altcover) package added to it (`dotnet add package altcover --version 9.0.1`, e.g.).
 
 ```text
 > (install NUnit via choco)
 > (if altcover not added to csproj/vbproj yet) dotnet add package altcover --version 8.5.841
-> dotnet sonarscanner begin /k:dotnet-nunit-altcover /d:sonar.login=<INSERT-TOKEN> /d:sonar.host.url=http://localhost:9900 /d:sonar.verbose=true /d:"sonar.cs.opencover.reportsPaths=NUnitResults.xml"
+> dotnet sonarscanner begin /k:dotnet-nunit-altcover /d:sonar.login=<INSERT-TOKEN> /d:sonar.host.url=http://localhost:9900 /d:sonar.verbose=true /d:"sonar.cs.nunit.reportsPaths=NUnitResults.xml" /d:"sonar.cs.opencover.reportsPaths=**/coverage.xml"
 > dotnet build
 > nunit3-console.exe --result=NUnitResults.xml "PrimeService.Tests\bin\Debug\netcoreapp3.1\PrimeService.Tests.dll"
 > dotnet test /p:AltCover=true
